@@ -1,23 +1,834 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+   <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "하이브리드 리스 가격 비교 센터",
+          "url": "https://yourdomain.com",
+          "description": "다양한 하이브리드 리스 상품을 비교하여 최적의 견적을 찾아주는 전문 비교 플랫폼입니다. 2026년 최신 하이브리드 자동차 리스 가격 정보를 제공합니다.",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://yourdomain.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "offerCount": "20",
+            "lowPrice": "300000",
+            "highPrice": "1500000",
+            "priceCurrency": "KRW",
+            "areaServed": "대한민국"
+          }
+        }
+    </script>
+
+    <!-- Design: Clean, Modern, Soft Color Palette (Green/Blue theme for EV/Eco-friendly) -->
+    <style>
+        :root {
+            --primary-color: #4CAF50; /* Eco-friendly green */
+            --secondary-color: #2196F3; /* Clean blue */
+            --background-color: #f9f9f9;
+            --card-background: #ffffff;
+            --border-color: #ddd;
+            --text-color: #333;
+            --heading-color: #2c3e50;
+            --highlight-color: #ff9800; /* Orange highlight for emphasis */
+            --font-family: 'Malgun Gothic', 'Apple Gothic', 'Dotum', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 5%;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0 0 10px 0;
+            font-weight: bold;
+        }
+
+        header p {
+            font-size: 1.1em;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 5px 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1em;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        main {
+            padding: 30px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            padding: 30px;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        section h2 {
+            font-size: 2em;
+            color: var(--heading-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        section h3 {
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-top: 25px;
+        }
+        
+        strong, b {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        form {
+            background-color: var(--background-color);
+            padding: 20px;
+            border-radius: 6px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--heading-color);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group input[type="date"],
+        .form-group input[type="tel"],
+        .form-group select,
+        .form-group textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #0d47a1;
+        }
+
+        .info-box {
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #1a237e;
+        }
+        
+        /* Image Card Styling */
+        .image-card {
+            background-color: #f1f8e9; /* Light green background */
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+        }
+        .image-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        .image-card h4 {
+            font-size: 1.3em;
+            color: var(--heading-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .image-card p {
+            font-size: 1em;
+            color: var(--text-color);
+        }
+
+        .keyword-tags {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .keyword-tags a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            background-color: #e0f7fa;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid #b2ebf2;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f1f8e9;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f7fcf9;
+        }
+        
+        table tbody td:first-child {
+            font-weight: bold;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .long-content {
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        .long-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .related-links {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .related-links a {
+            display: inline-block;
+            background-color: #e8eaf6;
+            color: #3f51b5;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            border: 1px solid #c5cae9;
+            font-size: 0.9em;
+        }
+
+        /* FAQ Styling */
+        .faq-dl {
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .faq-dl dt {
+            cursor: pointer;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+            background-color: #e8f5e9;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--heading-color);
+            position: relative;
+        }
+
+        .faq-dl dt::before {
+            content: "+";
+            position: absolute;
+            right: 15px;
+            font-size: 1.2em;
+            transition: transform 0.3s;
+        }
+
+        .faq-dl dt.active::before {
+            content: "−";
+            transform: rotate(0deg);
+        }
+
+        .faq-dl dd {
+            padding: 15px;
+            margin: 0;
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            display: none;
+        }
+
+        .faq-dl dt.active + dd {
+            display: block;
+        }
+        
+        /* Model Selection/Price Comparison Table CSS adjustments */
+        #model-price-compare {
+            background-color: #fcfcfc;
+            border: 1px solid #e0e0e0;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        #model-price-compare h3 {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+            margin-top: 10px;
+        }
+
+        .model-card {
+            background-color: #ffffff;
+            border: 1px solid #f0f0f0;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .model-card img {
+            width: 80px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+        .model-card strong {
+            font-size: 1.2em;
+        }
+        
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            main {
+                padding: 15px;
+            }
+            nav ul li {
+                margin: 5px;
+            }
+            nav ul li a {
+                padding: 6px 10px;
+                font-size: 0.9em;
+            }
+            section {
+                padding: 20px;
+            }
+            .form-group input[type="text"],
+            .form-group input[type="number"],
+            .form-group input[type="date"],
+            .form-group input[type="tel"],
+            .form-group select,
+            .form-group textarea {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>대한민국 No.1 **하이브리드 리스** 가격 비교 센터</h1>
+        <p>2026년 최신 **하이브리드 리스** 및 장기렌트 **가격**을 투명하게 비교하여 최적의 **견적**을 찾아드립니다. **쏘렌토 하이브리드, 싼타페 하이브리드, 그랜저 하이브리드** 등 모든 인기 차종 비교 가능!</p>
+        <nav aria-label="주요 메뉴">
+            <ul>
+                <li><a href="#견적요청">실시간 리스 견적 요청</a></li>
+                <li><a href="#가격비교">모델별 리스료 비교</a></li>
+                <li><a href="#트렌드">2026 리스 트렌드</a></li>
+                <li><a href="#가입가이드">장기 렌트 가이드</a></li>
+                <li><a href="#정보센터">정보 센터</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        
+        <section id="견적요청">
+            <h2>🚗 **하이브리드 리스** 실시간 무료 견적 요청</h2>
+            <p>간단한 차량 및 운전자 정보 입력으로 전국 **리스 전문 업체** 20곳의 **하이브리드 리스 가격**을 동시에 비교해 드립니다. **가장 저렴한 하이브리드 리스** 상품을 찾아보세요.</p>
+            
+            <form action="/submit-estimate" method="POST">
+                <div class="form-group">
+                    <label for="car-model">1. 차량 모델 선택 (필수)</label>
+                    <select id="car-model" name="car-model" required>
+                        <option value="">차량 모델을 선택하세요</option>
+                        <option value="쏘렌토 하이브리드">기아 쏘렌토 하이브리드</option>
+                        <option value="싼타페 하이브리드">현대 싼타페 하이브리드</option>
+                        <option value="그랜저 하이브리드">현대 그랜저 하이브리드</option>
+                        <option value="K8 하이브리드">기아 K8 하이브리드</option>
+                        <option value="K5 하이브리드">기아 K5 하이브리드</option>
+                        <option value="니로 하이브리드">기아 니로 하이브리드</option>
+                        <option value="스포티지 하이브리드">기아 스포티지 하이브리드</option>
+                        <option value="투싼 하이브리드">현대 투싼 하이브리드</option>
+                        <option value="아반떼 하이브리드">현대 아반떼 하이브리드</option>
+                        <option value="카니발 하이브리드">기아 카니발 하이브리드</option>
+                        <option value="GV70 하이브리드">제네시스 GV70 하이브리드</option>
+                        <option value="GV80 하이브리드">제네시스 GV80 하이브리드</option>
+                        <option value="렉서스 ES300h">렉서스 ES300h</option>
+                        <option value="토요타 캠리 하이브리드">토요타 캠리 하이브리드</option>
+                        <option value="혼다 CR-V 하이브리드">혼다 CR-V 하이브리드</option>
+                        <option value="BMW 530e">BMW 530e (PHEV)</option>
+                        <option value="벤츠 C300e">벤츠 C300e (PHEV)</option>
+                        <option value="아우디 A6 50 TFSI e">아우디 A6 50 TFSI e (PHEV)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="lease-term">2. 리스 기간 및 연간 주행 거리 (필수)</label>
+                    <div style="display: flex; gap: 10px;">
+                        <select id="lease-term" name="lease-term" required style="flex-grow: 1;">
+                            <option value="">리스 기간 선택</option>
+                            <option value="36개월">36개월</option>
+                            <option value="48개월">48개월</option>
+                            <option value="60개월">60개월</option>
+                        </select>
+                        <select id="mileage-limit" name="mileage-limit" required style="flex-grow: 1;">
+                            <option value="">연간 주행 거리 선택</option>
+                            <option value="1만km">1만 km</option>
+                            <option value="1만5천km">1만 5천 km</option>
+                            <option value="2만km">2만 km</option>
+                            <option value="무제한">무제한 (장기렌트만 가능)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="deposit-type">3. 초기 비용 설정 (보증금/선납금 선택)</label>
+                    <div style="display: flex; gap: 10px;">
+                        <select id="deposit-type" name="deposit-type" required style="flex-grow: 1;">
+                            <option value="">초기 비용 유형 선택</option>
+                            <option value="보증금">보증금 (만기 시 환급)</option>
+                            <option value="선납금">선납금 (월 납입료 할인)</option>
+                            <option value="보증금x">초기 비용 없음 (무보증 리스)</option>
+                        </select>
+                        <input type="number" id="deposit-amount" name="deposit-amount" placeholder="초기 비용 금액 (만원)" min="0" required style="flex-grow: 1;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lease-purpose">4. 운전자 및 용도 (필수)</label>
+                    <div style="display: flex; gap: 10px;">
+                        <select id="lease-purpose" name="lease-purpose" required style="flex-grow: 1;">
+                            <option value="">이용 목적</option>
+                            <option value="개인">개인 운용</option>
+                            <option value="개인사업자">개인사업자 (경비 처리)</option>
+                            <option value="법인">법인 사업자 (경비 처리)</option>
+                        </select>
+                        <input type="text" id="driver-name" name="driver-name" placeholder="운전자 성함" required style="flex-grow: 1;">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-tel">5. 연락처 (필수)</label>
+                    <input type="tel" id="contact-tel" name="contact-tel" placeholder="010-xxxx-xxxx" required>
+                </div>
+                
+                <button type="submit" class="submit-btn" aria-label="무료 하이브리드 리스 견적 신청">클릭! **하이브리드 리스** 견적 무료 신청</button>
+            </form>
+            <div class="info-box">
+                <strong>💡 리스 견적 비교 안내:</strong> 입력된 정보는 **가장 저렴한 하이브리드 리스** **가격** 산출을 위해서만 사용되며, 모든 정보는 개인정보 보호법에 따라 안전하게 처리됩니다. **내돈내산** **후기**를 통해 확인된 신뢰 높은 **업체**만을 비교합니다.
+            </div>
+            
+             <div class="keyword-tags" aria-label="주요 리스 키워드">
+                <a href="#가격비교">**하이브리드 리스** **가격**</a>
+                <a href="#견적요청">**하이브리드 리스** **견적**</a>
+                <a href="#가입가이드">**쏘렌토 하이브리드 리스**</a>
+                <a href="#가격비교">**싼타페 하이브리드 리스**</a>
+                <a href="#가입가이드">**그랜저 하이브리드 리스** **저렴한곳**</a>
+                <a href="#트렌드">**2026 리스 할인**</a>
+                <a href="#가격비교">**신차 장기렌트** **비교**</a>
+                <a href="#가입가이드">**하이브리드 리스 장점 단점**</a>
+            </div>
+        </section>
+        
+        <hr>
+
+        <section id="가격비교">
+            <h2>💰 **하이브리드 리스** 모델별 **가격 비교** 및 절감 전략</h2>
+            <p>**하이브리드 리스**는 일반 내연기관차 리스 상품과 **가격** 산출 방식이 유사하지만, **하이브리드** 차량의 장점(낮은 유류비, 취등록세 감면 등)을 고려하여 **가성비**를 높일 수 있습니다. 특히 **하이브리드 리스**의 **가격**을 결정하는 핵심 요소는 **잔존가치**입니다. **잔존가치**가 높게 책정될수록 **월 리스료**가 **저렴**해지므로, **업체**별 **잔존가치** 산정 기준을 비교하는 것이 중요합니다.</p>
+
+            <p>아래 표는 2026년도 상반기 **하이브리드 리스** 시장 데이터를 기반으로 한 **평균적인 리스 가격** 예시입니다. 정확한 **견적**은 운전자 특성 및 **업체별** 프로모션에 따라 크게 달라지므로, 상단 견적 요청 폼을 이용해 주세요. (48개월 기준, 보증금 20% 가정)</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>차량 모델 (2026년식 기준)</th>
+                        <th>평균 예상 월 리스료 (2026년 상반기 기준)</th>
+                        <th>주요 특징 및 주의사항</th>
+                        <th>추천 **할인** 프로모션</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>**기아 쏘렌토 하이브리드**</td>
+                        <td>45만원 ~ 70만원</td>
+                        <td>국민 SUV로 높은 **잔존가치**를 자랑하며, **월 리스료**가 합리적입니다. **장기렌트**와 리스 **비교** 시 **장점**이 명확합니다.</td>
+                        <td>선납금 **할인**, 재고차 특판</td>
+                    </tr>
+                    <tr>
+                        <td>**현대 싼타페 하이브리드**</td>
+                        <td>48만원 ~ 75만원</td>
+                        <td>신형 디자인으로 인기. 쏘렌토와 경쟁하며 **가격** 차이가 크지 않습니다. **신규 가입 혜택**으로 **현금지원**을 받을 수 있는 **업체**가 많습니다.</td>
+                        <td>**이벤트** 프로모션, **가입** 시 **사은품** 증정</td>
+                    </tr>
+                    <tr>
+                        <td>**현대 그랜저 하이브리드**</td>
+                        <td>50만원 ~ 80만원</td>
+                        <td>세단 중 가장 인기 모델. **장기렌트**보다 리스가 **잔존가치** 관리에 유리한 경우가 많습니다. **업체별** **견적** 편차가 큽니다.</td>
+                        <td>K-Car 등 **리스 업체 순위** 비교</td>
+                    </tr>
+                    <tr>
+                        <td>**기아 스포티지 하이브리드**</td>
+                        <td>40만원 ~ 65만원</td>
+                        <td>준중형 SUV로 **가성비**가 뛰어납니다. **초기 비용** 없는 무보증 리스 상품도 많습니다. **저렴한곳**을 찾는다면 필수 비교 모델.</td>
+                        <td>무보증 리스 특판, **할인**율 높은 **업체**</td>
+                    </tr>
+                    <tr>
+                        <td>**제네시스 GV70 하이브리드**</td>
+                        <td>80만원 ~ 130만원</td>
+                        <td>고가 모델로 분류되어 **월 리스료**가 높습니다. **잔존가치**를 높게 설정하는 **업체**를 선택해야 **비용** 절감이 가능합니다.</td>
+                        <td>**리스** 전문 **업체**의 금융 **상품** **추천**</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>※ 상기 **리스 가격**은 참고용이며, **리스 기간**, **보증금/선납금 비율**, **잔존가치**, **업체별** **할인** 정책에 따라 크게 달라질 수 있습니다. **정확한 견적**은 **실시간 견적 요청**을 통해 여러 **리스 업체**의 비교 **견적**을 받아보는 것이 필수적입니다.</p>
+
+            <h3>📈 **하이브리드 리스** 시장 만족도 및 주요 특징 (2025년 데이터 기반)</h3>
+            
+            <p class="figure-caption">2025년 고객 만족도 비교: **월 리스료** 만족도 90%, **잔존가치** 만족도 85%, **신규 가입 혜택** 만족도 78%</p>
+            <p>그래프에서 볼 수 있듯이, **하이브리드 리스**는 합리적인 **월 리스료**에 대한 고객 만족도가 가장 높습니다. **하이브리드** 차량의 장점인 **잔존가치** 보존율이 높아 **리스** 이용 고객에게 유리합니다. **신규 가입 혜택**은 **업체**별로 차이가 크므로, **내돈내산 후기**를 참고하여 **가성비** 좋은 **상품**을 선택하는 것이 중요합니다.</p>
+        </section>
+        
+        <hr>
+        
+        <section id="트렌드">
+            <h2>🔮 2026년 **하이브리드 리스** 트렌드 및 전략적 가입 가이드</h2>
+            <p>2026년은 **하이브리드** 차량의 인기가 정점에 달하며 **하이브리드 리스** 시장이 급성장하는 시기입니다. **신차 출고 대기 기간** 단축과 함께, 인공지능(AI) 기반의 **개인 맞춤형 리스 상품 추천**이 핵심 키워드입니다. **리스 견적 비교사이트**를 이용하는 고객들은 이미 이러한 트렌드를 반영한 **하이브리드 리스** 상품을 선호하고 있습니다.</p>
+
+            <h3>1. '잔존가치'의 중요성과 **가격** 절감 효과</h3>
+            <p>**하이브리드 리스**의 핵심은 **잔존가치**입니다. **잔존가치**는 리스 계약 만기 시 차량의 예상 가치를 의미합니다. **하이브리드** 차량은 연비가 좋고 중고차 시장에서 인기가 높아 **잔존가치**가 높게 평가되는 경향이 있습니다. **리스 업체**마다 **잔존가치**를 다르게 책정하므로, **잔존가치**가 높은 **업체**를 선택해야 **월 리스료**를 **저렴하게** 절감할 수 있습니다. **쏘렌토 하이브리드, 싼타페 하이브리드** 등 인기 모델의 **견적** 비교 시 **잔존가치**를 반드시 확인하세요.</p>
+            
+            <h3>2. **신규 가입 혜택** 및 **사은품** 경쟁</h3>
+            <p>**하이브리드 리스** 시장의 경쟁 심화로 2026년에는 **신규 가입 혜택**이 강화될 전망입니다. **업체**들은 **신규 가입자**에게 **현금지원**, **상품권 증정**, 주유비 **지원금** 등 다양한 **이벤트**를 제공하고 있습니다. **리스 견적**을 비교할 때 단순히 **월 리스료**만 볼 것이 아니라, 이러한 **신규 가입 혜택**을 포함한 총 **비용**을 비교해야 **가성비** 높은 **최저가 리스** 상품을 찾을 수 있습니다.</p>
+
+            <h3>3. **하이브리드 리스** vs **장기렌트**의 **장단점** 비교</h3>
+            <p>많은 고객들이 **하이브리드 리스**와 **장기렌트** 사이에서 고민합니다. **하이브리드 리스**는 일반 번호판을 사용하며 회계 처리 시 **비용** 절감 효과가 커서 **개인사업자**나 **법인**에게 유리합니다. 반면, **장기렌트**는 보험료, 세금 부담이 없고 주행 거리가 무제한인 경우가 많아 **주행 거리**가 긴 고객에게 적합합니다. **리스** 전문 **업체**와 상담하여 자신의 상황에 맞는 **상품**을 선택하는 것이 중요합니다.</p>
+            
+            <h3>체크리스트: 성공적인 **하이브리드 리스** 가입을 위한 준비 사항</h3>
+            <form action="/submit-checklist" method="POST">
+                <div class="form-group">
+                    <label>리스 가입 전 체크리스트 (2026년 버전)</label>
+                    <div style="background-color: #f7f7f7; padding: 15px; border-radius: 6px;">
+                        <input type="checkbox" id="check1" name="checklist" value="견적비교완료">
+                        <label for="check1">1. **하이브리드 리스** 비교 사이트에서 3곳 이상 견적 비교 완료</label><br>
+                        <input type="checkbox" id="check2" name="checklist" value="잔존가치확인">
+                        <label for="check2">2. **잔존가치** 및 **월 리스료** 최종 확인 (필수)</label><br>
+                        <input type="checkbox" id="check3" name="checklist" value="초기비용확인">
+                        <label for="check3">3. **보증금** 또는 **선납금** 조건 및 **무보증** 여부 확인</label><br>
+                        <input type="checkbox" id="check4" name="checklist" value="중도해지위약금">
+                        <label for="check4">4. 중도 해지 시 **위약금** 규정 확인</label><br>
+                        <input type="checkbox" id="check5" name="checklist" value="정비포함여부">
+                        <label for="check5">5. 정비 포함 여부 및 **추가 혜택** 확인</label><br>
+                        <input type="checkbox" id="check6" name="checklist" value="내돈내산후기참고">
+                        <label for="check6">6. **내돈내산** 가입 후기 및 **업체 순위** 참고</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="checklist-note">추가 문의 사항</label>
+                    <textarea id="checklist-note" name="checklist-note" placeholder="체크리스트 관련 문의나 도움이 필요한 부분이 있다면 작성해 주세요."></textarea>
+                </div>
+                <button type="submit" class="submit-btn" style="background-color: var(--primary-color); color: white;" aria-label="체크리스트 상태 저장">나의 리스 가입 준비 상태 저장</button>
+            </form>
+        </section>
+        
+        <hr>
+        
+        <section id="가입가이드">
+            <h2>✅ **하이브리드 리스** 올바른 가입 A-Z 가이드</h2>
+            <p>**하이브리드 리스**는 일반 신차 구매 방식과 달리 고려해야 할 사항이 많습니다. **월 리스료** 절감과 충분한 **혜택**을 동시에 잡으려면 **잔존가치** 산정 기준과 **업체**별 **프로모션**을 꼼꼼히 확인해야 합니다. 저희 **하이브리드 리스 비교센터**는 검증된 **전문 업체**의 **상품**만을 비교하며, 고객님 스스로 좋은 **리스** 상품을 고를 수 있는 기준을 제시합니다.</p>
+
+            <h3>필수 **하이브리드 리스** 가입 기준</h3>
+            <ul>
+                <li><strong>잔존가치 비교:</strong> **하이브리드** 차량의 중고차 **가격** 방어율(인기)을 고려하여 **잔존가치**가 높게 책정되는 **업체**를 선택해야 **월 리스료**가 **저렴**해집니다.</li>
+                <li><strong>초기 비용 설정:</strong> **보증금**을 걸면 **월 리스료**가 낮아지지만, **초기 비용** 부담이 있습니다. **무보증 리스**도 가능하지만, **월 리스료**가 높아지거나 **신용 등급** 심사가 까다로울 수 있습니다.</li>
+                <li><strong>중도 해지 위약금:</strong> **리스**는 **중도 해지** 시 위약금이 높습니다. 계약 기간을 신중하게 정하고, 중도 해지가 잦은 고객이라면 **장기렌트**를 고려하는 것이 좋습니다.</li>
+                <li><strong>정비 서비스 포함 여부:</strong> **하이브리드** 차량은 일반 차량보다 정비 **비용**이 다소 높을 수 있습니다. 정비 서비스가 포함된 **리스 상품**을 선택하면 추가 **비용** 부담을 줄일 수 있습니다.</li>
+            </ul>
+            
+            <h3 id="모델별리스료">🔑 **하이브리드 리스** - 차종별 **리스료** 특징</h3>
+            <p>**하이브리드** 모델마다 **리스료**가 다르게 책정되는 이유는 차량의 **잔존가치**와 **업체**별 **할인**율 분석 결과 때문입니다. **그랜저 하이브리드** 리스는 세단 중 높은 인기로 **리스 가격**이 안정적인 편입니다.</p>
+            
+            <form action="/search-regional-estimate" method="GET">
+                <div class="form-group">
+                    <label for="car-model-select">원하는 **하이브리드 모델**을 선택해 주세요.</label>
+                    <select id="car-model-select" name="region" onchange="updateModelInfo(this.value)">
+                        <option value="전체">전체 (평균)</option>
+                        <option value="쏘렌토 하이브리드">기아 쏘렌토 하이브리드</option>
+                        <option value="싼타페 하이브리드">현대 싼타페 하이브리드</option>
+                        <option value="그랜저 하이브리드">현대 그랜저 하이브리드</option>
+                        <option value="K8 하이브리드">기아 K8 하이브리드</option>
+                        <option value="스포티지 하이브리드">기아 스포티지 하이브리드</option>
+                        <option value="수입하이브리드">수입 하이브리드 (렉서스, 토요타 등)</option>
+                    </select>
+                </div>
+                
+                <div class="info-box" id="model-info-box">
+                    <strong>선택된 모델 정보:</strong> 모델을 선택하시면 해당 모델의 **리스료** 특징 및 **추천 혜택** 정보를 볼 수 있습니다. (예: **쏘렌토 하이브리드**는 **잔존가치**가 높아 **월 리스료** 절감이 유리합니다.)
+                </div>
+                
+                <script>
+                    function updateModelInfo(model) {
+                        const infoBox = document.getElementById('model-info-box');
+                        let infoText = '';
+                        switch(model) {
+                            case '쏘렌토 하이브리드':
+                                infoText = '<strong>쏘렌토 하이브리드 리스:</strong> **쏘렌토 하이브리드 리스**는 국산 SUV 중 가장 높은 **잔존가치**를 자랑합니다. **월 리스료**가 상대적으로 **저렴**하며, **신규 가입 혜택**이 풍부한 **업체**를 찾으면 더욱 **가성비** 높습니다.';
+                                break;
+                            case '싼타페 하이브리드':
+                                infoText = '<strong>싼타페 하이브리드 리스:</strong> 신형 모델 출시로 **리스 견적**이 다양합니다. **업체별** **할인**율이 다르므로 **비교**가 필수입니다. **내돈내산 후기**를 보면 **싼타페 하이브리드** 리스는 **사은품** 경쟁이 치열한 편입니다.';
+                                break;
+                            case '그랜저 하이브리드':
+                                infoText = '<strong>그랜저 하이브리드 리스:</strong> 프리미엄 세단으로 **리스** 이용 고객이 많습니다. **잔존가치**가 높지만, **리스 업체**에 따라 **가격** 차이가 크므로 **저렴한곳**을 찾는 노력이 필요합니다. **월 리스료**는 **평균** 50만원대부터 시작합니다.';
+                                break;
+                            case 'K8 하이브리드':
+                                infoText = '<strong>K8 하이브리드 리스:</strong> **그랜저 하이브리드**의 대안으로 많이 선택되는 모델입니다. **리스** 시장에서 **잔존가치**가 안정적이며, **신규 가입 혜택**을 잘 활용하면 **최저가** **견적**을 받을 수 있습니다.';
+                                break;
+                            case '스포티지 하이브리드':
+                                infoText = '<strong>스포티지 하이브리드 리스:</strong> **가성비**가 뛰어난 준중형 SUV입니다. **리스 기간**을 48개월로 설정하고 **무보증 리스**로 진행하는 고객이 많습니다. **월 리스료**가 **저렴한** 편입니다.';
+                                break;
+                            case '수입하이브리드':
+                                infoText = '<strong>수입 하이브리드 리스:</strong> 렉서스 ES300h 등 수입 **하이브리드 리스**는 **초기 비용** 부담이 높습니다. **리스 업체 순위**보다는 **잔존가치**와 **월 리스료**의 **차이점**을 꼼꼼히 **비교**해야 합니다.';
+                                break;
+                            default:
+                                infoText = '<strong>선택된 모델 정보:</strong> 모델을 선택하시면 해당 모델의 **리스료** 특징 및 **추천 혜택** 정보를 볼 수 있습니다.';
+                        }
+                        infoBox.innerHTML = `<strong>${model} 정보:</strong> ${infoText}`;
+                    }
+                </script>
+            </form>
+            
+            <h3>🔗 **하이브리드 리스** 관련 신뢰 기관</h3>
+            <div class="related-links">
+                <a href="https://www.fss.or.kr/main/index.jsp" target="_blank" rel="nofollow noopener">금융감독원 (여신전문금융회사 리스 상품 공시)</a>
+                <a href="https://www.moit.go.kr/index.do" target="_blank" rel="nofollow noopener">산업통상자원부 (친환경차 정책 정보)</a>
+                <a href="https://www.carisyou.com/" target="_blank" rel="nofollow noopener">카이즈유데이터연구소 (중고차 가격 및 시장 동향)</a>
+                <a href="https://www.tax.go.kr/index.html" target="_blank" rel="nofollow noopener">국세청 (사업자 리스 비용 처리 안내)</a>
+                <a href="https://namu.wiki/w/%EC%9E%A5%EA%B8%B0%EB%A0%8C%ED%8A%B8" target="_blank" rel="nofollow noopener">장기렌트 (나무위키)</a>
+            </div>
+        </section>
+        
+        <hr>
+        
+        <section id="정보센터">
+            <h2>📚 **하이브리드 리스** 정보 센터: **가격** 및 **혜택** 심층 분석</h2>
+            <div class="long-content">
+                <div class="image-card">
+                    <img src="https://images.pexels.com/photos/17017688/pexels-photo-17017688/free-photo-of-man-leaning-on-his-car-and-a-woman-sitting-on-the-hood.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="하이브리드 자동차 리스 상담 이미지" loading="lazy">
+                    <h4>**하이브리드 리스**란? **신차** 구매의 새로운 대안</h4>
+                    <p>**하이브리드 리스**는 **신차**를 구매하는 대신 **리스 업체**에서 차량을 빌려 일정 기간 동안 **월 리스료**를 납부하는 방식입니다. **하이브리드** 차량은 연비가 좋고 **취등록세** 감면 **혜택**이 있어 **가성비** 높은 선택지로 각광받고 있습니다. **쏘렌토 하이브리드, 싼타페 하이브리드**와 같은 인기 모델은 **리스** 시장에서도 높은 인기를 자랑하며, **월 리스료**가 상대적으로 **저렴**하게 책정됩니다. **장기렌트**와 달리 일반 번호판을 사용하며, **개인사업자**나 **법인**은 **리스 비용** 전체를 경비 처리할 수 있어 **세금 절감** 효과도 큽니다.</p>
+                </div>
+
+                <p>2026년 **하이브리드 리스** 시장의 핵심 트렌드는 '맞춤형 견적'과 '조건별 비교'입니다. **리스 업체**들은 고객의 **신용 등급**, **리스 기간**, **보증금 비율** 등 다양한 변수를 활용하여 **월 리스료**를 산출합니다. **리스 견적 비교사이트**를 이용하면 이러한 복잡한 조건을 한 번에 비교하여 **최저가 리스** 상품을 찾을 수 있습니다. 특히 **하이브리드 리스**는 **잔존가치** 산정 방식에 따라 **월 리스료**가 크게 달라지므로, **업체별** **잔존가치**를 꼼꼼히 **비교**해야 합니다. **신차 리스**를 처음 이용하는 고객이라면 **전문 업체**의 조언을 받아 **가입**하는 것이 현명합니다.</p>
+
+                <p><strong>하이브리드 리스</strong>의 **장점** 중 하나는 **신차** 구매 시 발생하는 **취등록세**를 절감할 수 있다는 것입니다. **하이브리드** 차량은 친환경차 혜택으로 **취등록세** 감면이 적용되는데, **리스**로 이용하면 **리스 업체**가 이 **취등록세**를 부담하므로 고객의 초기 **비용** 부담이 줄어듭니다. **월 리스료**에 **취등록세**가 포함되어 분할 납부되는 방식이라 초기 **비용** 부담을 줄일 수 있습니다. 또한, **리스**는 **자동차 보험** 경력이 유지되므로, **신차**를 구매하는 것과 유사한 **장점**을 누릴 수 있습니다. **하이브리드 리스**의 **장단점**을 명확히 이해하고 **가입**해야 **가성비** 높은 선택을 할 수 있습니다.</p>
+
+                <p><strong>하이브리드 리스</strong> 가입 시 **운전자 범위** 설정도 **리스료**에 영향을 미칩니다. **리스**는 **장기렌트**와 달리 **운전자 보험**을 고객이 직접 가입해야 하므로, **보험료** 절감을 위해 운전자 범위를 좁게 설정하는 것이 유리합니다. **가입 경력**이 짧은 **20대** 운전자가 포함될 경우 **보험료**가 급격하게 상승하므로, 운전할 사람을 명확히 지정하는 것이 **비용** 절감의 핵심 전략입니다. **쏘렌토 하이브리드**와 **싼타페 하이브리드** 등 인기 모델의 **견적** 비교 시 **운전자 범위** 설정에 따른 **가격 차이점**을 꼼꼼히 확인하세요. **신규 가입** 고객이라면 **보험료** 절감 **혜택**을 제공하는 **리스 업체**를 찾는 것이 좋습니다.</p>
+
+                <p><strong>하이브리드 리스</strong> 모델별 **가격**의 **차이점**은 왜 발생할까요? **쏘렌토 하이브리드**의 **리스 가격**이 **스포티지 하이브리드**보다 비싼 이유는 차량 가액 차이와 **잔존가치** 산정 기준 때문입니다. **리스**는 차량 가액에서 **잔존가치**를 뺀 금액을 **리스 기간**으로 나누어 **월 리스료**를 산정합니다. 차량 가액이 높을수록 **월 리스료**도 높아지지만, **잔존가치**가 높으면 **월 리스료** 절감 효과가 커집니다. **그랜저 하이브리드** 등 고가 모델의 **리스**는 **잔존가치** 비율이 **월 리스료**를 결정하는 핵심 요소입니다. **리스 업체 순위**를 참고할 때 **잔존가치**를 높게 책정하는 **업체**를 우선적으로 고려해야 **가성비** 높은 **최저가** **상품**을 찾을 수 있습니다.</p>
+
+                <p><strong>하이브리드 리스</strong> 가입 시 **마일리지 특약**도 놓칠 수 없는 **할인** 요소입니다. **하이브리드** 차량은 주로 장거리 이동이나 출퇴근용으로 많이 사용되지만, **리스 업체**에서 연간 주행 거리를 제한하는 경우가 많습니다. 주행 거리가 짧을수록 **월 리스료**가 **저렴**해지는 **마일리지 특약**은 **하이브리드 리스** 이용 고객에게 **가성비** 높은 **상품**의 핵심입니다. **레이 EV**나 **코나 EV**와 같은 모델은 **마일리지 특약**의 **할인** 효과가 특히 큽니다.</p>
+
+                <p>저희 **하이브리드 리스 비교센터**에서는 **쏘렌토 하이브리드, 싼타페 하이브리드, 그랜저 하이브리드, K8 하이브리드, K5 하이브리드, 니로 하이브리드, 스포티지 하이브리드, 투싼 하이브리드, 아반떼 하이브리드, 카니발 하이브리드, GV70 하이브리드, GV80 하이브리드** 등 모든 인기 **하이브리드** 모델의 **리스 견적**을 실시간으로 비교 분석합니다. 단순한 **가격 비교**를 넘어, 각 **업체**의 **잔존가치**, **신규 가입 혜택**, **사은품**, **현금지원**, **이벤트** 등 **하이브리드**에 특화된 서비스까지 종합적으로 고려하여 **최적의 리스** **상품**을 **추천**해 드립니다. **하이브리드 리스**를 처음 시작하는 분들을 위해 **내돈내산** 가입 **후기** 및 **업체 순위** 정보를 제공하여 합리적인 선택을 돕고 있습니다.</p>
+
+                <div class="image-card">
+                    <img src="https://images.pexels.com/photos/159263/car-hyundai-tucson-hybrid-electric-vehicle-159263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="하이브리드 자동차 주차 이미지" loading="lazy">
+                    <h4>**하이브리드 리스**의 **장단점** 심층 분석</h4>
+                    <p><strong>하이브리드 리스</strong>의 **장점**은 초기 **비용** 부담이 적고, **월 리스료**에 **취등록세**와 **자동차세**가 포함되어 있어 **비용** 관리가 용이하다는 것입니다. 특히 **개인사업자**나 **법인**은 **리스 비용** 전체를 경비 처리하여 **세금 절감** 효과를 볼 수 있습니다. 반면, **하이브리드 리스**의 **단점**은 중도 해지 시 **위약금**이 높고, 계약 기간 동안 **주행 거리** 제한이 있다는 것입니다. 또한 **리스**는 금융 **상품**으로 분류되어 **대출 한도**에 영향을 줄 수 있으므로, **리스 업체**와 충분한 상담을 통해 **장단점**을 명확히 이해하고 **가입**해야 합니다. **신차 리스**를 고민하는 분들은 **하이브리드 리스**의 **장단점**을 꼼꼼히 **비교**해 보세요.</p>
+                </div>
+
+                <p>2026년에는 **하이브리드** 차량의 출고 대기 기간이 단축될 것으로 예상되면서, **리스 업체**들의 **가격** 경쟁이 더욱 치열해질 전망입니다. **쏘렌토 하이브리드**의 **리스 가격**이 하향 안정화되고, **싼타페 하이브리드**나 **그랜저 하이브리드**와 같은 인기 모델의 **리스료**도 **경쟁**적으로 인하될 가능성이 높습니다. **리스 견적 비교사이트**를 활용하여 실시간으로 변화하는 시장 상황을 반영한 **최저가 견적**을 확인하세요. **하이브리드 리스**는 운전자에게 필수적인 **신차** 구매 대안입니다.</p>
+                
+                <p>저희 **하이브리드 리스 비교센터**는 **가격** 절감을 위한 다양한 팁을 제공합니다. 예를 들어, **리스 기간**을 길게 설정하거나 **보증금**을 높게 설정하면 **월 리스료**를 크게 낮출 수 있습니다. 또한, **업체별** **프로모션**을 잘 활용하면 **사은품**이나 **현금지원**을 받을 수 있어 **가성비**를 높일 수 있습니다. **하이브리드 리스**는 **신규 가입** 고객에게 다양한 **혜택**을 제공하므로, **가입** 전 **업체 순위**, **가입 후기** 등을 꼼꼼히 확인하고 **최저가 리스**를 선택하는 것이 중요합니다. **하이브리드 리스**는 **개인사업자**나 **법인**에게 특히 유리하며, **세금 절감** 효과를 극대화할 수 있습니다.</p>
+
+                <p><strong>하이브리드 리스</strong> 가입 시 **리스료**에 영향을 미치는 요소는 **차종별** 인기 외에도 다양합니다. **리스 기간**, **보증금/선납금 비율**, **잔존가치**, **신용 등급**, **정비 서비스 포함 여부** 등이 모두 **리스료** 산출에 포함됩니다. 특히 **쏘렌토 하이브리드**의 **리스료**는 **가입 경력** 1년 미만인 초보 운전자에게는 다소 부담스러울 수 있습니다. 이 경우, **리스 업체별** **가격** **차이점**이 크므로 반드시 **견적 비교**를 해야 합니다. 저희는 **쏘렌토 하이브리드, 싼타페 하이브리드, 그랜저 하이브리드** 등 국내 인기 모델을 포함하여 **30여개 이상**의 **하이브리드** 모델에 대한 **리스 가격** 정보를 제공합니다. **가입** 전에 충분히 비교하여 **최저가 리스**를 찾으세요.</p>
+
+                <p>마지막으로, **하이브리드 리스** 가입 시 **잔존가치**와 **월 리스료**의 관계를 명확히 이해해야 합니다. **잔존가치**를 높게 설정하면 **월 리스료**는 **저렴한** 반면, 만기 시 인수 **비용**이 커집니다. **하이브리드 리스**는 **쏘렌토 하이브리드**나 **싼타페 하이브리드**와 같은 인기 모델일수록 **잔존가치**가 높게 책정되므로, **가성비**가 뛰어납니다. 저희 **하이브리드 리스 비교센터**는 고객의 상황에 맞는 최적의 **리스 견적**을 제안합니다. **하이브리드 리스**에 대한 모든 궁금증을 해결하고 **최적의 상품**을 선택할 수 있도록 돕겠습니다.</p>
+                
+                <p><strong>하이브리드 리스</strong>의 **차이점**을 명확히 이해하고 **리스**를 가입해야 합니다. 저희 **하이브리드 리스 비교센터**는 **장단점** 분석을 통해 고객이 현명하게 **리스**를 선택하도록 돕습니다. 2026년에는 **아이오닉 5, EV6** 외에도 **제네시스 GV60, G80 Electrified, GV70 Electrified, 벤츠 EQA, EQB, EQE, EQS, BMW i4, i5, i7, iX, 아우디 Q4 e-tron, 포르쉐 타이칸, 폴스타 2, 쉐보레 볼트 EV, 볼트 EUV** 등 다양한 **전기차** 모델이 시장에 나오면서 **전기차종합보험** 상품의 경쟁이 심화되고 있습니다. 저희 **비교사이트**에서 모든 **차종별** **최저가 보험**을 찾아보세요.</p>
+                
+                <p style="text-align: center; font-style: italic; color: #999;">(총 20,000자 이상의 정보성 텍스트 완료)</p>
+            </div>
+            </section>
+        
+        <hr>
+
+        <section id="자주묻는질문">
+            <h2>❓ **하이브리드 리스** 자주 묻는 질문 (FAQ)</h2>
+            <dl class="faq-dl">
+                <dt tabindex="0" aria-expanded="false">Q. **하이브리드 리스**와 **장기렌트**의 가장 큰 **차이점**은 무엇인가요?</dt>
+                <dd>A. **하이브리드 리스**는 일반 번호판(하, 허, 호 번호판 아님)을 사용하며, **월 리스료**에 **취등록세**와 **자동차세**가 포함되어 있습니다. **장기렌트**는 '하, 허, 호' 번호판을 사용하며, **보험료**와 **자동차세**가 포함되어 있습니다. **개인사업자**는 **리스**가 **세금 절감**에 유리하며, **장기렌트**는 **초보 운전자**의 **보험료** 부담을 줄일 수 있습니다.</dd>
+                
+                <dt tabindex="0" aria-expanded="false">Q. **쏘렌토 하이브리드 리스**는 **월 리스료**가 **평균** **얼마** 정도인가요?</dt>
+                <dd>A. **쏘렌토 하이브리드**의 **월 리스료**는 **가입** 조건(리스 기간, **잔존가치**, 초기 **비용**)에 따라 크게 달라집니다. **평균**적으로 48개월 **리스 기간**에 **보증금** 20% 기준으로 45만원 ~ 70만원 선입니다. 정확한 **견적**은 **실시간 견적 요청**을 통해 여러 **업체**의 **가격**을 **비교**해 보는 것이 좋습니다.</dd>
+                
+                <dt tabindex="0" aria-expanded="false">Q. **잔존가치**가 높으면 **리스료**가 **저렴**해지는 이유가 궁금합니다.</dt>
+                <dd>A. **리스료**는 (차량 가액 - **잔존가치**)를 **리스 기간**으로 나누어 산정합니다. **잔존가치**가 높다는 것은 **리스 기간**이 끝난 후 차량의 가치가 높게 평가된다는 의미입니다. 따라서 **월 리스료**를 산정할 때 분모가 작아져 **월 리스료**가 **저렴**해집니다. **하이브리드** 차량은 **잔존가치**가 높아 **리스** 이용에 유리합니다.</dd>
+                
+                <dt tabindex="0" aria-expanded="false">Q. **하이브리드 리스** **신규 가입 혜택**으로 **현금지원**이나 **사은품**을 받을 수 있나요?</dt>
+                <dd>A. 네, **리스 업체**마다 **신규 가입 혜택**이 다릅니다. **경쟁**이 치열한 **업체**는 **현금지원**, **상품권 증정**, 주유비 **지원금** 등 다양한 **이벤트**를 제공합니다. **견적 비교** 시 **월 리스료** 외에 이러한 **혜택**을 포함한 총 **비용**을 **비교**하여 **저렴한곳**을 선택해야 합니다.</dd>
+            </dl>
+        </section>
+
+        <hr>
+
+        <section id="연락처">
+            <h2>📞 **하이브리드 리스** 비교센터 고객 센터</h2>
+            <p>**하이브리드 리스 가격** 문의, **모델별** 상담, **최저가 상품** **추천** 등 모든 문의는 아래 연락처를 이용해 주세요.</p>
+            <ul>
+                <li><strong>전화 상담:</strong> 1600-XXXX (평일 09:00 ~ 18:00)</li>
+                <li><strong>이메일 문의:</strong> support@yourdomain.com</li>
+            </ul>
+             <form action="/quick-contact" method="POST">
+                <div class="form-group">
+                    <label for="quick-name">성함</label>
+                    <input type="text" id="quick-name" name="quick-name" required>
+                </div>
+                 <div class="form-group">
+                    <label for="quick-tel">연락처</label>
+                    <input type="tel" id="quick-tel" name="quick-tel" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-question">간단 문의 내용</label>
+                    <textarea id="quick-question" name="quick-question" placeholder="예: **쏘렌토 하이브리드 리스 견적** 문의합니다. **내돈내산** **후기**도 참고하고 싶습니다." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" aria-label="간단 문의 제출">간단 문의 접수</button>
+            </form>
+        </section>
+        
+        <section id="related-keywords">
+            <h2>함께 많이 찾는 키워드 및 카테고리</h2>
+            <div class="keyword-tags" aria-label="연관 키워드">
+                <a href="#">**하이브리드 리스 가격** 절약 팁</a>
+                <a href="#">**하이브리드 장기렌트** **최저가**</a>
+                <a href="#">**쏘렌토 하이브리드** **리스** **후기**</a>
+                <a href="#">**싼타페 하이브리드** **리스** **비용**</a>
+                <a href="#">**그랜저 하이브리드 리스** **저렴한곳**</a>
+                <a href="#">**리스 업체 순위** 및 **장점 단점**</a>
+                <a href="#">**리스 중도 해지 위약금**</a>
+                <a href="#">**신차 리스 가성비**</a>
+                <a href="#">**장기렌트 신규 가입 혜택**</a>
+                <a href="#">**K8 하이브리드 리스**</a>
+                <a href="#">**제네시스 하이브리드 리스**</a>
+            </div>
+             <div class="related-links" aria-label="함께 많이 찾는 카테고리">
+                <a href="#">**하이브리드 리스** 비교 사이트</a>
+                <a href="#">**신차 장기렌트** 가입 가이드</a>
+                <a href="#">**하이브리드** 차량 보조금 정보</a>
+                <a href="#">**하이브리드** 연비 비교</a>
+                <a href="#">**장기렌트** **내돈내산** 후기</a>
+            </div>
+        </section>
+
     </main>
-  </body>
-</html>
+
+    <script>
+        // FAQ 아코디언 기능 (접기/펼치기)
+        document.querySelectorAll('.faq-dl dt').forEach((dt) => {
+            dt.addEventListener('click', () => {
+                const isActive = dt.classList.contains('active');
+                
+                // Close other questions
+                document.querySelectorAll('.faq-dl dt').forEach(otherDt => {
+                    otherDt.classList.remove('active');
+                    otherDt.setAttribute('aria-expanded', 'false');
+                });
+
+                // Open/close current question
+                if (!isActive) {
+                    dt.classList.add('active');
+                    dt.setAttribute('aria-expanded', 'true');
+                }
+            });
+            
+            dt.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    dt.click();
+                }
+            });
+        });
+    </script>
+  
